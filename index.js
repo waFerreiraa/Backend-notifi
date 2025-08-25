@@ -76,7 +76,6 @@ async function verificarProcessos() {
   return notificados;
 }
 
-// Endpoint para cron-job.org
 app.get("/api/cron", async (req, res) => {
   try {
     const notificados = await verificarProcessos();
