@@ -1,0 +1,26 @@
+name: Notificar Processos
+
+on:
+  schedule:
+    - cron: '*/1 * * * *'  # roda a cada 10 minutos
+
+jobs:
+  run-notification:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Fazer checkout do código
+        uses: actions/checkout@v3
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Rodar script de notificação
+        env:
+          FIREBASE_CONFIG: ${{ secrets.FIREBASE_CONFIG }}
+        run: node index.js
