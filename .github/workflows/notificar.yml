@@ -2,8 +2,8 @@ name: Notificacoes
 
 on:
   schedule:
-    - cron: "0 12,16,20 * * *"   # 3x por dia (UTC)
-  workflow_dispatch:             # permite rodar manualmente
+    - cron: "10 23 * * *"  # 20:10 horário de Brasília (23:10 UTC)
+  workflow_dispatch:       # permite rodar manualmente
 
 jobs:
   run:
