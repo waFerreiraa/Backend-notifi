@@ -1,0 +1,27 @@
+name: Notificacoes
+
+on:
+  schedule:
+    - cron: "0 12,16,20 * * *"   # 3x por dia (UTC)
+  workflow_dispatch:             # permite rodar manualmente
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v3
+
+      - name: Instalar Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Instalar dependências
+        run: npm install
+
+      - name: Executar script de notificações
+        env:
+          FIREBASE_KEY: ${{ secrets.FIREBASE_KEY }}
+        run: node index.js
