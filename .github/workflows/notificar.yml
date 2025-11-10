@@ -2,7 +2,7 @@ name: Notificacoes
 
 on:
   schedule:
-    - cron: "15 23 * * *"   # 20:15 horário de Brasília
+   - cron: "*/2 * * * *"   # 20:15 horário de Brasília
   workflow_dispatch:
 
 jobs:
